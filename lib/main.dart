@@ -8,6 +8,7 @@ import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './widgets/chart.dart';
 import './models/transaction.dart';
+import './side_nav.dart';
 
 void main() {
   // SystemChrome.setPreferredOrientations([
@@ -256,6 +257,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             navigationBar: appBar,
           )
         : Scaffold(
+            drawer: SideNav(),
             appBar: appBar,
             body: pageBody,
             floatingActionButtonLocation:
