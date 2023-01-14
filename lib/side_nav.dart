@@ -29,6 +29,7 @@ class SideNav extends StatelessWidget {
               ),
             ),
           ),
+          // TODO: send them to end of column
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: [
