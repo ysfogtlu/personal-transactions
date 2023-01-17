@@ -1,14 +1,18 @@
+import 'dart:developer';
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import './storage.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './widgets/chart.dart';
 import './models/transaction.dart';
 import './side_nav.dart';
+
 
 void main() {
   // SystemChrome.setPreferredOrientations([
@@ -59,26 +63,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'New Shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Weekly Groceries',
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-  ];
+  List<Transaction> _userTransactions = []; //readContent()
   bool _showChart = false;
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
+
+    // TODO:Place this line to correct place
+    readContent().then((value) => _userTransactions = value);
+
+    // OR
+
+    /*
+    // TODO:Place this line to correct place
+    readContent().then((value) => {
+      setState((){
+        _userTransactions = value;
+      })
+    });   //
+     */
   }
 
   @override
@@ -113,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
     setState(() {
       _userTransactions.add(newTx);
+      writeContent(_userTransactions);
     });
   }
 
@@ -132,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   void _deleteTransaction(String id) {
     setState(() {
       _userTransactions.removeWhere((tx) => tx.id == id);
+      writeContent(_userTransactions);
     });
   }
 
