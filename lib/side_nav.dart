@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'storage.dart';
+import './widgets/login_screen.dart';
 
 class SideNav extends StatelessWidget {
   @override
@@ -26,41 +27,39 @@ class SideNav extends StatelessWidget {
               color: Colors.blue,
               image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage('https://oflutter.com/wp-content/uploads/2021/02/profile-bg3.jpg')
-              ),
+                  image: NetworkImage(
+                      'https://oflutter.com/wp-content/uploads/2021/02/profile-bg3.jpg')),
             ),
           ),
           // TODO: send them to end of column
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: [
-          // TODO: if (not logged in) show login
+              // TODO: if (not logged in) show login
               TextButton.icon(
-                  onPressed: onLogin,
-                  label: Text('Login', textScaleFactor: 1.5,style: TextStyle
-                    (color: Colors.white)),
-                  icon: Icon(
-                    Icons.login,
-                    color: Colors.white,
-                  ),
-                  ),
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => LoginScreen())),
+                label: Text('Login',
+                    textScaleFactor: 1.5,
+                    style: TextStyle(color: Colors.white)),
+                icon: Icon(
+                  Icons.login,
+                  color: Colors.white,
+                ),
+              ),
               TextButton.icon(
                 onPressed: onSetCard(),
-                label: Text('Set Card', textScaleFactor: 1.5,style: TextStyle
-                  (color: Colors.white)),
-                icon: Icon(
-                  Icons.add_card,
-                  color: Colors.white
-              ),
+                label: Text('Set Card',
+                    textScaleFactor: 1.5,
+                    style: TextStyle(color: Colors.white)),
+                icon: Icon(Icons.add_card, color: Colors.white),
               ),
               TextButton.icon(
                 onPressed: onLogout,
-                label: Text('Logout', textScaleFactor: 1.5,style: TextStyle
-                  (color: Colors.white)),
-                icon: Icon(
-                  Icons.logout,
-                  color: Colors.white
-              ),
+                label: Text('Logout',
+                    textScaleFactor: 1.5,
+                    style: TextStyle(color: Colors.white)),
+                icon: Icon(Icons.logout, color: Colors.white),
               )
             ],
           ),
@@ -69,9 +68,7 @@ class SideNav extends StatelessWidget {
     );
   }
 
-  onLogin(){
-  }
-  onSetCard(){}
-  onLogout(){}
+  onLogin() {}
+  onSetCard() {}
+  onLogout() {}
 }
-
