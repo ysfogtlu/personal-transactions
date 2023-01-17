@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'storage.dart';
+import './widgets/login_screen.dart';
 
 class SideNav extends StatelessWidget {
   @override
@@ -46,7 +47,8 @@ class SideNav extends StatelessWidget {
                 ),
               ),
               TextButton.icon(
-                onPressed: onSetCard,
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => LoginScreen())),
                 label: Text('Set Card',
                     textScaleFactor: 1.5,
                     style: TextStyle(color: Colors.white)),
