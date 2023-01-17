@@ -16,6 +16,7 @@ void main() {
   //   DeviceOrientation.portraitUp,
   // ]);
   runApp(MyApp());
+  //flutter run --no-sound-null-safety
 }
 
 class MyApp extends StatelessWidget {
@@ -257,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             navigationBar: appBar,
           )
         : Scaffold(
-            drawer: SideNav(),
+            //drawer: SideNav(),
             appBar: appBar,
             body: pageBody,
             floatingActionButtonLocation:
