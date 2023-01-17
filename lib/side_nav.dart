@@ -45,7 +45,7 @@ class SideNav extends StatelessWidget {
                   ),
                   ),
               TextButton.icon(
-                onPressed: onSetCard,
+                onPressed: onSetCard(),
                 label: Text('Set Card', textScaleFactor: 1.5,style: TextStyle
                   (color: Colors.white)),
                 icon: Icon(
