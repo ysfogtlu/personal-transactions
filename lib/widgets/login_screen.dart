@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   //const LoginScreen({super.key});
@@ -9,8 +10,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool loggedIn = false;
-  //late String name;
-  //final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _userPasswordController = TextEditingController();
@@ -47,6 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
       }
       setState(() {
         loggedIn = true;
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => MyHomePage()));
       });
     }
 
@@ -81,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                 labelText: 'Password',
                 hintText: 'Enter your password',
-                // Here is key idea
                 suffixIcon: IconButton(
                   icon: Icon(
                     // Based on passwordVisible state choose the icon

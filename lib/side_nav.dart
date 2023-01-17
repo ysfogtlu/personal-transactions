@@ -37,7 +37,8 @@ class SideNav extends StatelessWidget {
             children: [
               // TODO: if (not logged in) show login
               TextButton.icon(
-                onPressed: onLogin,
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => LoginScreen())),
                 label: Text('Login',
                     textScaleFactor: 1.5,
                     style: TextStyle(color: Colors.white)),
@@ -47,8 +48,7 @@ class SideNav extends StatelessWidget {
                 ),
               ),
               TextButton.icon(
-                onPressed: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => LoginScreen())),
+                onPressed: onSetCard(),
                 label: Text('Set Card',
                     textScaleFactor: 1.5,
                     style: TextStyle(color: Colors.white)),
